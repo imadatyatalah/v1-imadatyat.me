@@ -23,7 +23,9 @@ const ShareViaTwitter = ({
     >
       <TwitterIcon width={22} height={22} />
 
-      <span className="ml-2 hover:underline">Share via Twitter</span>
+      <span className="ml-2 font-medium hover:underline">
+        Share via Twitter
+      </span>
     </a>
   );
 };

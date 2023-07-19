@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 const ProjectsPage = () => {
   return (
-    <main className="my-4 space-y-4">
-      <section>
+    <main className="my-4">
+      <section className="space-y-4">
         <h1 className="text-3xl font-bold">Projects</h1>
 
         <Projects />

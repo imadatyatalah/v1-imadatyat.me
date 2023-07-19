@@ -14,10 +14,10 @@ const GuideDetailsPage = ({ params }: { params: { slug: string } }) => {
   }
 
   return (
-    <main>
+    <main className="my-4">
       <article className="flex space-y-4 flex-col items-start justify-center max-w-2xl mx-auto mb-16">
         <header>
-          <h1 className="mb-4 text-3xl font-bold tracking-tight text-center md:text-4xl md:leading-tight lg:text-[2.5rem]">
+          <h1 className="text-3xl font-bold tracking-tight text-center md:text-4xl md:leading-tight lg:text-[2.5rem]">
             {guide.title}
           </h1>
         </header>
@@ -26,7 +26,7 @@ const GuideDetailsPage = ({ params }: { params: { slug: string } }) => {
           <Component components={{ ...MDXComponents }} />
         </div>
 
-        <footer className="flex justify-between w-full mt-8 font-medium">
+        <footer className="flex justify-between w-full">
           <div>
             <ShareViaTwitter
               title={guide.title}

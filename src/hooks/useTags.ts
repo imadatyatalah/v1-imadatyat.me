@@ -16,7 +16,7 @@ const useTags = (data: any): [any, (text: string) => void] => {
     if (searchParams.get("tag") !== undefined) {
       setCurrentTag(searchParams.get("tag") as string);
     }
-  }, [searchParams.get("tag")]);
+  }, [searchParams]);
 
   const memoizedData = useMemo(() => {
     if (currentTag) {

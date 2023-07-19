@@ -32,17 +32,13 @@ const BlogPost = ({ slug, title, summary, publishedAt, image }: Props) => {
           </div>
         ) : null}
 
-        <div>
-          <p className="text-sm text-gray-500">
+        <div className="space-y-2">
+          <h3 className="text-xl font-semibold title-hover">{title}</h3>
+
+          <p className="text-sm text-gray-400">
             {dayjs(publishedAt).format("MMMM D, YYYY")} {` • `}
             {views} views
           </p>
-
-          <h3 className="mt-1 mb-2 text-xl font-semibold title-hover">
-            {title}
-          </h3>
-
-          <p className="text-gray-400">{summary}</p>
         </div>
       </article>
     </Link>

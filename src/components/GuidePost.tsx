@@ -18,13 +18,11 @@ const GuidePost = ({ title, description, slug, publishedAt }: Props) => {
 
   return (
     <Link className="block" href={`/guides/${slug}`}>
-      <article className="w-full group">
-        <div className="flex flex-col md:justify-between md:flex-row md:items-center md:mb-1">
-          <h3 className="mb-px text-xl font-semibold md:mb-0 title-hover">
-            {title}
-          </h3>
+      <article className="w-full group space-y-2 md:space-y-1">
+        <div className="flex space-y-px md:space-y-0 flex-col md:justify-between md:flex-row md:items-center">
+          <h3 className="text-xl font-semibold title-hover">{title}</h3>
 
-          <p className="mb-2 text-sm text-gray-500 md:text-right md:mb-0">
+          <p className="text-sm text-gray-400 md:text-right">
             {dayjs(publishedAt).format("MMMM D, YYYY")}
             {` • `}
             {views} views
