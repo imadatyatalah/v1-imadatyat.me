@@ -1,0 +1,216 @@
+---
+title: How to setup Contentlayer in your Next.js app?
+publishedAt: "2021-10-19"
+description: Setup Contentlayer in a Next.js app with ease!
+image: "/static/guides/how-to-setup-contentlayer-in-nextjs/banner.png"
+---
+
+## Table of contents
+
+## What is Contentlayer?
+
+> Note: Contentlayer is still in development and some APIs might change!
+
+[Contentlayer](https://www.contentlayer.dev) turns your content into data - making it super easy to import MD(X) and CMS content in your app.
+
+## Automatic Setup
+
+The easiest way to create a new Next.js app with Contentlayer is by using [official Next.js example](https://github.com/vercel/next.js/tree/canary/examples/with-contentlayer),
+which sets up everything automatically for you. To create a project, run:
+
+```bash
+npx create-next-app --example with-contentlayer with-contentlayer-app
+# or
+yarn create next-app --example with-contentlayer with-contentlayer-app
+```
+
+After the installation is complete:
+
+- Run `npm run dev` or `yarn dev` to start the development server on `http://localhost:3000`.
+- Visit `http://localhost:3000` to view your application
+
+## Manual Setup
+
+### Install Contentlayer in your Next.js app
+
+```bash
+npm install contentlayer next-contentlayer
+# or
+yarn add contentlayer next-contentlayer
+```
+
+### Add your Contentlayer config
+
+Create `contentlayer.config.js` file at the root of the project with the following code.
+
+```js:contentlayer.config.js
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+
+const Post = defineDocumentType(() => ({
+  name: "Post",
+  filePathPattern: `**/*.md`,
+  contentType: "markdown",
+  fields: {
+    title: { type: "string", required: true },
+    date: { type: "string", required: true },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ""),
+    },
+  },
+}));
+
+export default makeSource({
+  contentDirPath: "posts",
+  documentTypes: [Post],
+});
+```
+
+### Set up Next.js plugin in `next.config.js` (optional: enables live-reload and build setup)
+
+```js:next.config.js
+const { withContentlayer } = require("next-contentlayer");
+
+module.exports = withContentlayer({
+  // Your Next.js config...
+});
+```
+
+### Add a `jsconfig.json` file
+
+```json:jsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    }
+  },
+  "include": [".contentlayer/generated"]
+}
+```
+
+In case you are using TypeScript in your project you already have a `tsconfig.json`
+to which you will add these lines of code to.
+
+```diff:tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+       // These option allow you to configure module aliases.
+       // So you will import contentlayer generated content from "contentlayer/generated" instead of "./.contentlayer/generated"
++      "contentlayer/generated": ["./.contentlayer/generated"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
++    ".contentlayer/generated"
+  ],
+}
+```
+
+### Add some posts
+
+1. Add `posts` folder at the root of your app(Where your content will live).
+2. Add `.md` files(e.g. `pre-rendering.md`).
+3. Add your content(You can write anything you want, This is just an example).
+
+```md:posts/pre-rendering.md
+---
+title: "Two Forms of Pre-rendering"
+date: "2020-01-01"
+---
+
+Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
+
+- **Static Generation** is the pre-rendering method that generates the HTML at **build time**. The pre-rendered HTML is then _reused_ on each request.
+- **Server-side Rendering** is the pre-rendering method that generates the HTML on **each request**.
+
+Importantly, Next.js lets you **choose** which pre-rendering form to use for each page. You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+```
+
+### Fetch and display your posts
+
+```jsx:pages/index.js
+import Link from "next/link";
+import { allPosts } from "contentlayer/generated";
+import { pick } from "@contentlayer/client";
+
+export default function Home({ posts }) {
+  return (
+    <section>
+      <ul>
+        {posts.map(({ slug, date, title }) => (
+          <li key={slug}>
+            <Link href={`/posts/${slug}`}>
+              <a>{title}</a>
+            </Link>
+            <br />
+            <small>{date}</small>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+// Statically fetch all posts
+export async function getStaticProps() {
+  const posts = allPosts.map((post) => pick(post, ["title", "date", "slug"]));
+
+  return { props: { posts } };
+}
+```
+
+### Create dynamic routes for each post
+
+In this section, you should know how [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes) works in Next.js,
+
+Add `posts/[slug].js` inside `pages` folder.
+
+```jsx:pages/posts/[slug].js
+import { allPosts } from 'contentlayer/generated'
+
+export default function Post({ post }) {
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <div>{post.date}</div>
+
+      <div dangerouslySetInnerHTML={{ __html: post.body.html }} />
+    </article>
+  )
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: allPosts.map((p) => ({ params: { slug: p.slug } })),
+    fallback: false,
+  }
+}
+
+// Statically fetch post by slug
+export async function getStaticProps({ params }) {
+  const post = allPosts.find((post) => post.slug === params?.slug)
+
+  return { props: { post } }
+}
+```
+
+Now we are done 🎉, Check [http://localhost:3000](http://localhost:3000) to see the results!
+
+## Conclusion
+
+In this guide, We learned about how we can integrate Next.js with Contentlayer,
+As well as how we can display all posts and post by slug.
+
+An online demo of the application that we built is hosted on [Vercel](https://nextjs-contentlayer-guide.vercel.app)
+and the code is available on [GitHub](https://github.com/imadatyatalah/nextjs-contentlayer-guide)
+for TypeScript version check out this [GitHub branch](https://github.com/imadatyatalah/nextjs-contentlayer-guide/tree/typescript).
+
+Make sure to [contact me](https://twitter.com/ImadAtyat) if you have any questions.
