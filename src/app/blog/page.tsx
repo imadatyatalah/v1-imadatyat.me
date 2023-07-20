@@ -10,7 +10,14 @@ export const metadata: Metadata = {
 const BlogPage = () => {
   const posts = allBlogs
     .map((post) =>
-      pick(post, ["slug", "title", "summary", "publishedAt", "image"]),
+      pick(post, [
+        "slug",
+        "title",
+        "summary",
+        "publishedAt",
+        "image",
+        "blurDataURL",
+      ]),
     )
     .sort(
       (a, b) =>

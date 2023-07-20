@@ -14,6 +14,7 @@ const ProjectCard = ({ title, live, image }: Project) => {
             title={title}
             quality={50}
             className="rounded-lg"
+            placeholder="blur"
           />
         </div>
       </div>

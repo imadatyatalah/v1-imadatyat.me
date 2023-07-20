@@ -10,9 +10,19 @@ import dayjs from "dayjs";
 import type { Blog } from "contentlayer/generated";
 // import type { Views } from "@/types/Views";
 
-type Props = Pick<Blog, "title" | "summary" | "slug" | "publishedAt" | "image">;
+type Props = Pick<
+  Blog,
+  "title" | "summary" | "slug" | "publishedAt" | "image" | "blurDataURL"
+>;
 
-const BlogPost = ({ slug, title, summary, publishedAt, image }: Props) => {
+const BlogPost = ({
+  slug,
+  title,
+  summary,
+  publishedAt,
+  image,
+  blurDataURL,
+}: Props) => {
   // const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   // const views = data?.total;
   const views = 0;
@@ -28,6 +38,8 @@ const BlogPost = ({ slug, title, summary, publishedAt, image }: Props) => {
               height="627"
               alt={title}
               className="rounded-lg"
+              placeholder="blur"
+              blurDataURL={blurDataURL}
             />
           </div>
         ) : null}
