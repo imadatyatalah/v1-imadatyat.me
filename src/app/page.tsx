@@ -31,7 +31,7 @@ const HomePage = () => {
 
   return (
     <main className="my-4">
-      <section className="space-y-8">
+      <section className="space-y-12">
         <div className="space-y-4">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold">

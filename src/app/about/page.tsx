@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <main className="my-4">
-      <section className="space-y-8">
-        <div className="space-y-5">
+      <section className="space-y-12">
+        <div className="space-y-4">
           <h1 className="text-3xl font-bold">About Me</h1>
 
-          <div className="space-y-4">
+          <div className="space-y-2">
             <p>
               I&apos;m Imad Atyat-Allah, A Front-end React developer passionate
               about creating beautiful, user-friendly web applications.
@@ -27,7 +27,7 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           <h2 className="text-2xl font-bold">Links</h2>
 
           <div className="flex flex-col">
@@ -69,7 +69,7 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           <h2 className="text-2xl font-bold">Experience</h2>
 
           <div>WIP</div>

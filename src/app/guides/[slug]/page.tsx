@@ -1,16 +1,13 @@
 import { allGuides } from "contentlayer/generated";
-import { useMDXComponent } from "next-contentlayer/hooks";
-import MDXComponents from "@/components/MDXComponents";
 import ShareViaTwitter from "@/components/ShareViaTwitter";
+import Guide from "./guide";
+import { redirect } from "next/navigation";
 
 const GuideDetailsPage = ({ params }: { params: { slug: string } }) => {
   const guide = allGuides.find((guide) => guide.slug === params?.slug);
 
-  // @ts-ignore
-  const Component = useMDXComponent(guide.body.code);
-
   if (!guide) {
-    return <div>404</div>;
+    return redirect("/404");
   }
 
   return (
@@ -22,9 +19,7 @@ const GuideDetailsPage = ({ params }: { params: { slug: string } }) => {
           </h1>
         </header>
 
-        <div className="w-full prose prose-dark max-w-none">
-          <Component components={{ ...MDXComponents }} />
-        </div>
+        <Guide code={guide.body.code} />
 
         <footer className="flex justify-between w-full">
           <div>

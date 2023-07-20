@@ -28,8 +28,8 @@ const SOCIAL_LINKS = [
 
 const Footer = () => {
   return (
-    <footer className="py-6 text-center" id="global-footer">
-      <div className="flex items-center justify-center pb-4">
+    <footer className="space-y-4 text-center py-6" id="global-footer">
+      <div className="flex items-center justify-center">
         {SOCIAL_LINKS.map(({ title, href, icon: Icon }) => (
           <a
             aria-label={title}

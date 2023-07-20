@@ -1,17 +1,14 @@
 import { allBlogs } from "contentlayer/generated";
-import { useMDXComponent } from "next-contentlayer/hooks";
-import MDXComponents from "@/components/MDXComponents";
 import dayjs from "dayjs";
 import ShareViaTwitter from "@/components/ShareViaTwitter";
+import Blog from "./blog";
+import { redirect } from "next/navigation";
 
 const BlogDetailsPage = ({ params }: { params: { slug: string } }) => {
   const post = allBlogs.find((post) => post.slug === params?.slug);
 
-  // @ts-ignore
-  const Component = useMDXComponent(post.body.code);
-
   if (!post) {
-    return <div>404</div>;
+    return redirect("/404");
   }
 
   return (
@@ -35,9 +32,7 @@ const BlogDetailsPage = ({ params }: { params: { slug: string } }) => {
           </div>
         </header>
 
-        <div className="w-full prose prose-dark max-w-none">
-          <Component components={{ ...MDXComponents }} />
-        </div>
+        <Blog code={post.body.code} />
 
         <footer>
           <ShareViaTwitter title={post.title} slug={post.slug} type="blog" />
