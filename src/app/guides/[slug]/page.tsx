@@ -2,9 +2,20 @@ import { allGuides } from "contentlayer/generated";
 import ShareViaTwitter from "@/components/ShareViaTwitter";
 import Guide from "./guide";
 import { redirect } from "next/navigation";
+import prisma from "@/lib/prisma";
 
-const GuideDetailsPage = ({ params }: { params: { slug: string } }) => {
+const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
+  const slug = params?.slug;
+
   const guide = allGuides.find((guide) => guide.slug === params?.slug);
+
+  await prisma.views.upsert({
+    where: { slug: slug },
+    create: { slug: slug },
+    update: { count: { increment: 1 } },
+  });
+
+  const views = await prisma.views.findUnique({ where: { slug } });
 
   if (!guide) {
     return redirect("/404");
@@ -21,7 +32,7 @@ const GuideDetailsPage = ({ params }: { params: { slug: string } }) => {
 
         <Guide code={guide.body.code} />
 
-        <footer className="flex justify-between w-full">
+        <footer className="flex items-center justify-between w-full">
           <div>
             <ShareViaTwitter
               title={guide.title}
@@ -30,7 +41,9 @@ const GuideDetailsPage = ({ params }: { params: { slug: string } }) => {
             />
           </div>
 
-          <div>{/* <ViewCounter slug={slug} /> */}</div>
+          <div>
+            <p>{`${views?.count.toString()} views`}</p>
+          </div>
         </footer>
       </article>
     </main>

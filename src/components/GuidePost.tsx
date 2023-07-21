@@ -1,20 +1,14 @@
-import React from "react";
 import Link from "next/link";
 
-// import useSWR from "swr";
 import dayjs from "dayjs";
-
-// import fetcher from "@/lib/fetcher";
+import prisma from "@/lib/prisma";
 
 import type { Guides } from "contentlayer/generated";
-// import type { Views } from "@/types/Views";
 
 type Props = Pick<Guides, "title" | "description" | "slug" | "publishedAt">;
 
-const GuidePost = ({ title, description, slug, publishedAt }: Props) => {
-  // const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  // const views = data?.total;
-  const views = 0;
+const GuidePost = async ({ title, description, slug, publishedAt }: Props) => {
+  const views = await prisma.views.findUnique({ where: { slug } });
 
   return (
     <Link className="block" href={`/guides/${slug}`}>
@@ -25,7 +19,7 @@ const GuidePost = ({ title, description, slug, publishedAt }: Props) => {
           <p className="text-sm text-gray-400 md:text-right">
             {dayjs(publishedAt).format("MMMM D, YYYY")}
             {` • `}
-            {views} views
+            {views?.count.toString()} views
           </p>
         </div>
 

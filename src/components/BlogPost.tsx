@@ -1,31 +1,24 @@
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// import useSWR from "swr";
 import dayjs from "dayjs";
-
-// import fetcher from "@/lib/fetcher";
+import prisma from "@/lib/prisma";
 
 import type { Blog } from "contentlayer/generated";
-// import type { Views } from "@/types/Views";
 
 type Props = Pick<
   Blog,
   "title" | "summary" | "slug" | "publishedAt" | "image" | "blurDataURL"
 >;
 
-const BlogPost = ({
+const BlogPost = async ({
   slug,
   title,
-  summary,
   publishedAt,
   image,
   blurDataURL,
 }: Props) => {
-  // const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  // const views = data?.total;
-  const views = 0;
+  const views = await prisma.views.findUnique({ where: { slug } });
 
   return (
     <Link href={`/blog/${slug}`}>
@@ -49,7 +42,7 @@ const BlogPost = ({
 
           <p className="text-sm text-gray-400">
             {dayjs(publishedAt).format("MMMM D, YYYY")} {` • `}
-            {views} views
+            {views?.count.toString()} views
           </p>
         </div>
       </article>

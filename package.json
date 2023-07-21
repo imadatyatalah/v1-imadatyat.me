@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "prettier-format": "npx prettier --write .",
     "prettier-check": "npx prettier --check ."
   },
   "dependencies": {
+    "@prisma/client": "^5.0.0",
     "classnames": "^2.3.2",
     "contentlayer": "0.3.1",
     "dayjs": "^1.11.9",
@@ -31,6 +32,7 @@
     "postcss": "^8.4.26",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
+    "prisma": "^5.0.0",
     "reading-time": "^1.5.0",
     "rehype-accessible-emojis": "^0.3.2",
     "rehype-autolink-headings": "^6.1.1",

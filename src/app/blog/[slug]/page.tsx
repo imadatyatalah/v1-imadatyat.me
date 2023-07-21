@@ -3,9 +3,20 @@ import dayjs from "dayjs";
 import ShareViaTwitter from "@/components/ShareViaTwitter";
 import Blog from "./blog";
 import { redirect } from "next/navigation";
+import prisma from "@/lib/prisma";
 
-const BlogDetailsPage = ({ params }: { params: { slug: string } }) => {
-  const post = allBlogs.find((post) => post.slug === params?.slug);
+const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
+  const slug = params?.slug;
+
+  const post = allBlogs.find((post) => post.slug === slug);
+
+  await prisma.views.upsert({
+    where: { slug: slug },
+    create: { slug: slug },
+    update: { count: { increment: 1 } },
+  });
+
+  const views = await prisma.views.findUnique({ where: { slug } });
 
   if (!post) {
     return redirect("/404");
@@ -27,7 +38,7 @@ const BlogDetailsPage = ({ params }: { params: { slug: string } }) => {
 
             <p>
               {post.readingTime.text} {` • `}
-              {/* <ViewCounter slug={slug} /> */}
+              {`${views?.count.toString()} views`}
             </p>
           </div>
         </header>
