@@ -3,7 +3,7 @@
 import { CloseIcon, MenuIcon } from "@/icons/MenuIcons";
 import { useState } from "react";
 import NavLink from "./NavLink";
-import cn from "classnames";
+import { twMerge } from "tailwind-merge";
 
 const LINKS = [
   { title: "Home", href: "/" },
@@ -16,7 +16,7 @@ const LINKS = [
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navClassName = cn(
+  const navClassName = twMerge(
     isOpen
       ? "absolute h-screen z-10 top-[70px] left-0 w-full bg-[#090117] md:ml-0 md:static md:h-auto md:w-auto md:bg-transparent md:z-0"
       : "hidden md:block",
