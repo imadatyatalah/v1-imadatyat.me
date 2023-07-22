@@ -2,12 +2,8 @@ import BlogPost from "@/components/BlogPost";
 import GuidePost from "@/components/GuidePost";
 import { pick } from "contentlayer/client";
 import { allBlogs, allGuides } from "contentlayer/generated";
-import { Metadata } from "next";
 
 export const revalidate = 0;
-export const metadata: Metadata = {
-  title: "Home - Imad Atyat-Allah",
-};
 
 const HomePage = () => {
   const posts = allBlogs

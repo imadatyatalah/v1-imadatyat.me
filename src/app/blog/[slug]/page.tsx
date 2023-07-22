@@ -4,6 +4,34 @@ import ShareViaTwitter from "@/components/ShareViaTwitter";
 import Blog from "./blog";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
+import { Metadata } from "next";
+
+export const generateMetadata = ({
+  params,
+}: {
+  params: { slug: string };
+}): Metadata | undefined => {
+  const slug = params?.slug;
+
+  const post = allBlogs.find((post) => post.slug === slug);
+
+  if (!post) {
+    return;
+  }
+
+  return {
+    title: post.title,
+    description: post.summary,
+
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      type: "article",
+      publishedTime: post.publishedAt,
+      url: `https://imadatyat.me/blog/${slug}`,
+    },
+  };
+};
 
 const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
   const slug = params?.slug;

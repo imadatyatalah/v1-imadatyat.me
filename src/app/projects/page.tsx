@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Projects from "./projects";
 
 export const metadata: Metadata = {
-  title: "Projects - Imad Atyat-Allah",
+  title: "Projects",
 };
 
 const ProjectsPage = () => {

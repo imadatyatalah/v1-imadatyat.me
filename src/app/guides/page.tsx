@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const revalidate = 0;
 export const metadata: Metadata = {
-  title: "Guides - Imad Atyat-Allah",
+  title: "Guides",
 };
 
 const GuidesPage = () => {

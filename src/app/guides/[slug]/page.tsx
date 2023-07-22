@@ -3,6 +3,34 @@ import ShareViaTwitter from "@/components/ShareViaTwitter";
 import Guide from "./guide";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
+import { Metadata } from "next";
+
+export const generateMetadata = ({
+  params,
+}: {
+  params: { slug: string };
+}): Metadata | undefined => {
+  const slug = params?.slug;
+
+  const guide = allGuides.find((guide) => guide.slug === slug);
+
+  if (!guide) {
+    return;
+  }
+
+  return {
+    title: guide.title,
+    description: guide.description,
+
+    openGraph: {
+      title: guide.title,
+      description: guide.description,
+      type: "article",
+      publishedTime: guide.publishedAt,
+      url: `https://imadatyat.me/guides/${slug}`,
+    },
+  };
+};
 
 const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
   const slug = params?.slug;
