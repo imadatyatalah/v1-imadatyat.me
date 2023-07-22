@@ -1,11 +1,10 @@
 import BlogPost from "@/components/BlogPost";
 import GuidePost from "@/components/GuidePost";
-import ArrowRight from "@/icons/ArrowRight";
 import { pick } from "contentlayer/client";
 import { allBlogs, allGuides } from "contentlayer/generated";
 import { Metadata } from "next";
-import Link from "next/link";
 
+export const revalidate = 0;
 export const metadata: Metadata = {
   title: "Home - Imad Atyat-Allah",
 };
@@ -74,16 +73,6 @@ const HomePage = () => {
               <BlogPost key={post.slug} {...post} />
             ))}
           </div>
-
-          {/* <Link
-            className="inline-flex items-center text-gray-400 transition-colors hover:text-cyan-400"
-            href="/blog"
-          >
-            View all posts
-            <span className="w-5 h-5">
-              <ArrowRight />
-            </span>
-          </Link> */}
         </div>
 
         <div className="space-y-4">
@@ -94,16 +83,6 @@ const HomePage = () => {
               <GuidePost key={guide.slug} {...guide} />
             ))}
           </div>
-
-          {/* <Link
-            className="inline-flex items-center text-gray-400 transition-colors hover:text-cyan-400"
-            href="/guides"
-          >
-            View all guides
-            <span className="w-5 h-5">
-              <ArrowRight />
-            </span>
-          </Link> */}
         </div>
       </section>
     </main>
