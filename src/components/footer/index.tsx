@@ -28,7 +28,10 @@ const SOCIAL_LINKS = [
 
 const Footer = () => {
   return (
-    <footer className="space-y-4 text-center py-6" id="global-footer">
+    <footer
+      className="space-y-4 h-[120px] text-center flex items-center flex-col justify-center"
+      id="global-footer"
+    >
       <div className="flex items-center justify-center">
         {SOCIAL_LINKS.map(({ title, href, icon: Icon }) => (
           <a

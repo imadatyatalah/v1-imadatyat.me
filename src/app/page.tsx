@@ -32,7 +32,7 @@ const HomePage = () => {
     );
 
   return (
-    <main className="my-4">
+    <main className="main-container">
       <section className="space-y-12">
         <div className="space-y-4">
           <div className="space-y-2">

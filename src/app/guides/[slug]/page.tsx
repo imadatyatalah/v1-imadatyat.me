@@ -50,7 +50,7 @@ const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
   }
 
   return (
-    <main className="my-4">
+    <main className="main-container">
       <article className="flex space-y-4 flex-col items-start justify-center max-w-2xl mx-auto mb-16">
         <header>
           <h1 className="text-3xl font-bold tracking-tight text-center md:text-4xl md:leading-tight lg:text-[2.5rem]">

@@ -51,7 +51,7 @@ const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
   }
 
   return (
-    <main className="my-4">
+    <main className="main-container">
       <article className="flex space-y-4 flex-col items-start justify-center max-w-2xl mx-auto mb-16">
         <header className="w-full space-y-4">
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl md:leading-tight lg:text-[2.5rem]">

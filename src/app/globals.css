@@ -72,6 +72,9 @@
   .title-hover {
     @apply lg:group-hover:text-blue-400 lg:transition-all;
   }
+  .main-container {
+    @apply min-h-[calc(100vh-222px)] my-4;
+  }
 }
 
 .sticky-nav {

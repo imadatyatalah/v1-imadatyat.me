@@ -19,7 +19,7 @@ const GuidesPage = () => {
     );
 
   return (
-    <main className="my-4">
+    <main className="main-container">
       <section className="space-y-4">
         <h1 className="text-3xl font-bold">Guides</h1>
 
