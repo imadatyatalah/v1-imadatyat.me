@@ -89,22 +89,6 @@
   }
 }
 
-#nprogress {
-  position: relative;
-  z-index: 9999999;
-}
-
-#nprogress .bar {
-  background: #a42cd6 !important;
-  height: 2.5px !important;
-}
-
-#nprogress .peg {
-  box-shadow:
-    0 0 10px #a42cd6,
-    0 0 5px #a42cd6 !important;
-}
-
 .prose .anchor {
   @apply absolute invisible;
 
