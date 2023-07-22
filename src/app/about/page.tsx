@@ -69,11 +69,11 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="space-y-4">
+        {/* <div className="space-y-4">
           <h2 className="text-2xl font-bold">Experience</h2>
 
           <div>WIP</div>
-        </div>
+        </div> */}
       </section>
     </main>
   );
