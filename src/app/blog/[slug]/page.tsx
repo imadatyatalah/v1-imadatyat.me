@@ -5,6 +5,7 @@ import Blog from "./blog";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { Metadata } from "next";
+import { baseUrl } from "@/lib/constants";
 
 export const generateMetadata = ({
   params,
@@ -19,6 +20,8 @@ export const generateMetadata = ({
     return;
   }
 
+  const ogImage = `${baseUrl}/og?title=${post.title}`;
+
   return {
     title: post.title,
     description: post.summary,
@@ -29,6 +32,17 @@ export const generateMetadata = ({
       type: "article",
       publishedTime: post.publishedAt,
       url: `https://imadatyat.me/blog/${slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.summary,
+      images: [ogImage],
     },
   };
 };

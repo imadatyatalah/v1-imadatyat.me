@@ -49,7 +49,7 @@ const Footer = () => {
       </div>
 
       <p className="text-sm">
-        &copy; 2023-present Imad Atyat-Allah. All Rights Reserved.
+        &copy; 2021-present Imad Atyat-Allah. All Rights Reserved.
       </p>
     </footer>
   );

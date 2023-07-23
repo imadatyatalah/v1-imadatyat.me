@@ -4,6 +4,7 @@ import Guide from "./guide";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { Metadata } from "next";
+import { baseUrl } from "@/lib/constants";
 
 export const generateMetadata = ({
   params,
@@ -18,6 +19,8 @@ export const generateMetadata = ({
     return;
   }
 
+  const ogImage = `${baseUrl}/og?title=${guide.title}`;
+
   return {
     title: guide.title,
     description: guide.description,
@@ -28,6 +31,17 @@ export const generateMetadata = ({
       type: "article",
       publishedTime: guide.publishedAt,
       url: `https://imadatyat.me/guides/${slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: guide.title,
+      description: guide.description,
+      images: [ogImage],
     },
   };
 };
