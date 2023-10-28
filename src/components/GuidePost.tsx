@@ -25,7 +25,6 @@ const GuidePost = ({ title, description, slug, publishedAt }: Props) => {
             {dayjs(publishedAt).format("MMMM D, YYYY")}
             {` • `}
             <Suspense>
-              {/* @ts-expect-error Server Component */}
               <Views slug={slug} />
             </Suspense>
           </p>

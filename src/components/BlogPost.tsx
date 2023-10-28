@@ -42,7 +42,6 @@ const BlogPost = ({ slug, title, publishedAt, image, blurDataURL }: Props) => {
           <p className="text-sm text-gray-400">
             {dayjs(publishedAt).format("MMMM D, YYYY")} {` • `}
             <Suspense>
-              {/* @ts-expect-error Server Component */}
               <Views slug={slug} />
             </Suspense>
           </p>
