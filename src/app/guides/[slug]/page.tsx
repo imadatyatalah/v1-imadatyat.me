@@ -6,6 +6,7 @@ import prisma from "@/lib/prisma";
 import { Metadata } from "next";
 import { baseUrl } from "@/lib/constants";
 import { getViews } from "@/lib/fetchers";
+import { revalidateTag } from "next/cache";
 
 export const generateMetadata = ({
   params,
@@ -57,6 +58,8 @@ const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
     create: { slug: slug },
     update: { count: { increment: 1 } },
   });
+
+  revalidateTag(slug);
 
   const views = await getViews(slug);
 
