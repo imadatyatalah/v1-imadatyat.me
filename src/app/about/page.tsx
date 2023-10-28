@@ -1,3 +1,4 @@
+import AvailableForNewOpportunities from "@/components/AvailableForNewOpportunities";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -75,7 +76,11 @@ const AboutPage = () => {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold">Experience</h2>
+          <div className="flex items-center space-x-2">
+            <h2 className="text-2xl font-bold">Experience</h2>
+
+            <AvailableForNewOpportunities />
+          </div>
 
           <div className="space-y-4">
             <ExperienceCard
@@ -85,19 +90,32 @@ const AboutPage = () => {
                 company: "Portfolly",
                 employmentType: "Full-time",
                 hiringDate: "Sep 2022 - Present",
+                content: (
+                  <div className="text-sm">
+                    <ul className="list-disc list-inside ml-2">
+                      <li>Setup multi-tenancy</li>
+
+                      <li>
+                        Took care of all API stuff using Prisma and Planetscale
+                      </li>
+                    </ul>
+                  </div>
+                ),
               }}
             />
 
             <ExperienceCard
               experience={{
-                logo: "https://media.licdn.com/dms/image/D4E0BAQF7JmbdIyVoTg/company-logo_100_100/0/1666750453797?e=1700092800&v=beta&t=uA9l3ewDYZ6MNfcOx6SfpXWNNqewsD6yxjBrrZNgg18",
-                jobTitle: "Front-end Lead (via Obytes)",
-                company: "Lineup",
+                logo: "https://media.licdn.com/dms/image/C4D0BAQHl_VZFKwbItw/company-logo_100_100/0/1659460397480?e=1699488000&v=beta&t=-aBySiXHHS_afwdhCQ17_GEC4rETyajdVklHMsj-ntM",
+                jobTitle: "Front-end Developer",
+                company: "Obytes",
                 employmentType: "Full-time",
-                hiringDate: "Aug 2022 - Present",
+                hiringDate: "Apr 2022 - Present",
                 content: (
                   <div className="text-sm">
-                    <ul className="list-disc list-inside">
+                    <h3 className="font-medium">- Lineup project:</h3>
+
+                    <ul className="list-disc list-inside ml-2">
                       <li>
                         Led the front-end team, making sure we built a
                         great-looking and smooth-working web app.
@@ -122,16 +140,6 @@ const AboutPage = () => {
                 ),
               }}
             />
-
-            <ExperienceCard
-              experience={{
-                logo: "https://media.licdn.com/dms/image/C4D0BAQHl_VZFKwbItw/company-logo_100_100/0/1659460397480?e=1699488000&v=beta&t=-aBySiXHHS_afwdhCQ17_GEC4rETyajdVklHMsj-ntM",
-                jobTitle: "Front-end Developer",
-                company: "Obytes",
-                employmentType: "Full-time",
-                hiringDate: "Apr 2022 - Present",
-              }}
-            />
           </div>
         </div>
 
@@ -152,7 +160,7 @@ const AboutPage = () => {
                 </a>
               </li>
               <li>
-                GitHub{" "}
+                GitHub:{" "}
                 <a
                   href="https://github.com/imadatyatalah"
                   target="_blank"
