@@ -5,21 +5,20 @@ import dayjs from "dayjs";
 import prisma from "@/lib/prisma";
 
 import type { Blog } from "contentlayer/generated";
+import { Suspense } from "react";
+
+const Views = async ({ slug }: { slug: string }) => {
+  const views = await prisma.views.findUnique({ where: { slug } });
+
+  return <>{views?.count.toString()} views</>;
+};
 
 type Props = Pick<
   Blog,
   "title" | "summary" | "slug" | "publishedAt" | "image" | "blurDataURL"
 >;
 
-const BlogPost = async ({
-  slug,
-  title,
-  publishedAt,
-  image,
-  blurDataURL,
-}: Props) => {
-  const views = await prisma.views.findUnique({ where: { slug } });
-
+const BlogPost = ({ slug, title, publishedAt, image, blurDataURL }: Props) => {
   return (
     <Link href={`/blog/${slug}`}>
       <article className="max-w-sm sm:max-w-none group">
@@ -42,7 +41,10 @@ const BlogPost = async ({
 
           <p className="text-sm text-gray-400">
             {dayjs(publishedAt).format("MMMM D, YYYY")} {` • `}
-            {views?.count.toString()} views
+            <Suspense>
+              {/* @ts-expect-error Server Component */}
+              <Views slug={slug} />
+            </Suspense>
           </p>
         </div>
       </article>

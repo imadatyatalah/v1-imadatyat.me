@@ -4,12 +4,17 @@ import dayjs from "dayjs";
 import prisma from "@/lib/prisma";
 
 import type { Guides } from "contentlayer/generated";
+import { Suspense } from "react";
+
+const Views = async ({ slug }: { slug: string }) => {
+  const views = await prisma.views.findUnique({ where: { slug } });
+
+  return <>{views?.count.toString()} views</>;
+};
 
 type Props = Pick<Guides, "title" | "description" | "slug" | "publishedAt">;
 
-const GuidePost = async ({ title, description, slug, publishedAt }: Props) => {
-  const views = await prisma.views.findUnique({ where: { slug } });
-
+const GuidePost = ({ title, description, slug, publishedAt }: Props) => {
   return (
     <Link className="block" href={`/guides/${slug}`}>
       <article className="w-full group space-y-2 md:space-y-1">
@@ -19,7 +24,10 @@ const GuidePost = async ({ title, description, slug, publishedAt }: Props) => {
           <p className="text-sm text-gray-400 md:text-right">
             {dayjs(publishedAt).format("MMMM D, YYYY")}
             {` • `}
-            {views?.count.toString()} views
+            <Suspense>
+              {/* @ts-expect-error Server Component */}
+              <Views slug={slug} />
+            </Suspense>
           </p>
         </div>
 
