@@ -4,8 +4,6 @@ import GuidePost from "@/components/GuidePost";
 import { pick } from "contentlayer/client";
 import { allBlogs, allGuides } from "contentlayer/generated";
 
-export const revalidate = 0;
-
 const HomePage = () => {
   const posts = allBlogs
     .map((post) =>
