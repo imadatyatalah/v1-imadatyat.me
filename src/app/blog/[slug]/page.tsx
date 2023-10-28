@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { Metadata } from "next";
 import { baseUrl } from "@/lib/constants";
+import { getViews } from "@/lib/fetchers";
+import { revalidateTag } from "next/cache";
 
 export const generateMetadata = ({
   params,
@@ -58,7 +60,9 @@ const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
     update: { count: { increment: 1 } },
   });
 
-  const views = await prisma.views.findUnique({ where: { slug } });
+  revalidateTag(slug);
+
+  const views = await getViews(slug);
 
   if (!post) {
     return redirect("/404");
@@ -80,7 +84,7 @@ const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
 
             <p>
               {post.readingTime.text} {` • `}
-              {`${views?.count.toString()} views`}
+              {`${views} views`}
             </p>
           </div>
         </header>

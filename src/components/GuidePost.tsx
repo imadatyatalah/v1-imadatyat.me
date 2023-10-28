@@ -1,15 +1,15 @@
 import Link from "next/link";
 
 import dayjs from "dayjs";
-import prisma from "@/lib/prisma";
 
 import type { Guides } from "contentlayer/generated";
 import { Suspense } from "react";
+import { getViews } from "@/lib/fetchers";
 
 const Views = async ({ slug }: { slug: string }) => {
-  const views = await prisma.views.findUnique({ where: { slug } });
+  const views = await getViews(slug);
 
-  return <>{views?.count.toString()} views</>;
+  return <>{views} views</>;
 };
 
 type Props = Pick<Guides, "title" | "description" | "slug" | "publishedAt">;
