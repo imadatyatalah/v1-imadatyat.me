@@ -5,8 +5,9 @@ import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { Metadata } from "next";
 import { baseUrl } from "@/lib/constants";
-import { getViews } from "@/lib/fetchers";
 import { revalidateTag } from "next/cache";
+import { Suspense } from "react";
+import ViewsCounter from "@/components/ViewsCounter";
 
 export const generateMetadata = ({
   params,
@@ -61,8 +62,6 @@ const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
 
   revalidateTag(slug);
 
-  const views = await getViews(slug);
-
   if (!guide) {
     return redirect("/404");
   }
@@ -88,7 +87,11 @@ const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
           </div>
 
           <div>
-            <p>{`${views} views`}</p>
+            <p>
+              <Suspense fallback="views">
+                <ViewsCounter slug={slug} />
+              </Suspense>
+            </p>
           </div>
         </footer>
       </article>

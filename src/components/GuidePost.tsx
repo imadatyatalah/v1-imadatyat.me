@@ -4,13 +4,7 @@ import dayjs from "dayjs";
 
 import type { Guides } from "contentlayer/generated";
 import { Suspense } from "react";
-import { getViews } from "@/lib/fetchers";
-
-const Views = async ({ slug }: { slug: string }) => {
-  const views = await getViews(slug);
-
-  return <>{views} views</>;
-};
+import ViewsCounter from "./ViewsCounter";
 
 type Props = Pick<Guides, "title" | "description" | "slug" | "publishedAt">;
 
@@ -24,8 +18,8 @@ const GuidePost = ({ title, description, slug, publishedAt }: Props) => {
           <p className="text-sm text-gray-400 md:text-right">
             {dayjs(publishedAt).format("MMMM D, YYYY")}
             {` • `}
-            <Suspense>
-              <Views slug={slug} />
+            <Suspense fallback="views">
+              <ViewsCounter slug={slug} />
             </Suspense>
           </p>
         </div>
