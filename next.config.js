@@ -2,6 +2,9 @@ const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    ppr: true,
+  },
   images: {
     domains: ["media.licdn.com"],
   },

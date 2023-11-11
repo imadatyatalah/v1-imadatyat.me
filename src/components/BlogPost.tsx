@@ -5,13 +5,7 @@ import dayjs from "dayjs";
 
 import type { Blog } from "contentlayer/generated";
 import { Suspense } from "react";
-import { getViews } from "@/lib/fetchers";
-
-const Views = async ({ slug }: { slug: string }) => {
-  const views = await getViews(slug);
-
-  return <>{views} views</>;
-};
+import ViewsCounter from "./ViewsCounter";
 
 type Props = Pick<
   Blog,
@@ -42,8 +36,8 @@ const BlogPost = ({ slug, title, publishedAt, image, blurDataURL }: Props) => {
 
           <p className="text-sm text-gray-400">
             {dayjs(publishedAt).format("MMMM D, YYYY")} {` • `}
-            <Suspense>
-              <Views slug={slug} />
+            <Suspense fallback="views">
+              <ViewsCounter slug={slug} />
             </Suspense>
           </p>
         </div>
