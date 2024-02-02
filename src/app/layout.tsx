@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -57,6 +58,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <Footer />
 
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
