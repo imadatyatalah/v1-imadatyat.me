@@ -1,9 +1,11 @@
 "use client";
 
-import { CloseIcon, MenuIcon } from "@/icons/MenuIcons";
 import { useState } from "react";
-import NavLink from "./NavLink";
 import { twMerge } from "tailwind-merge";
+
+import { CloseIcon, MenuIcon } from "@/icons/MenuIcons";
+
+import NavLink from "./NavLink";
 
 const LINKS = [
   { title: "Home", href: "/" },
@@ -43,7 +45,7 @@ const NavBar = () => {
         <ul className="flex flex-col md:flex-row">
           {LINKS.map(({ title, href }) => (
             <li
-              className="mx-8 mt-6 border-b border-gray-700 md:mt-0 md:mr-0 md:border-none"
+              className="mx-8 mt-6 border-b border-gray-700 md:mr-0 md:mt-0 md:border-none"
               onClick={closeMenu}
               key={title}
             >
@@ -57,7 +59,7 @@ const NavBar = () => {
         <button
           aria-label="Toggle menu"
           type="button"
-          className="flex items-center justify-center transition-all rounded-lg w-9 h-9 bg-gray-600 hover:ring-2 ring-gray-300"
+          className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-600 ring-gray-300 transition-all hover:ring-2"
           onClick={toggleMenu}
         >
           {isOpen ? <CloseIcon /> : <MenuIcon />}

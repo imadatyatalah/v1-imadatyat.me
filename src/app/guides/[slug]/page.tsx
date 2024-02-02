@@ -1,12 +1,15 @@
 import { allGuides } from "contentlayer/generated";
-import ShareViaTwitter from "@/components/ShareViaTwitter";
-import Guide from "./guide";
-import { redirect } from "next/navigation";
-import prisma from "@/lib/prisma";
 import { Metadata } from "next";
-import { baseUrl } from "@/lib/constants";
-import { getViews } from "@/lib/fetchers";
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
+import { Suspense } from "react";
+
+import ShareViaTwitter from "@/components/ShareViaTwitter";
+import ViewsCounter from "@/components/ViewsCounter";
+import { baseUrl } from "@/lib/constants";
+import prisma from "@/lib/prisma";
+
+import Guide from "./guide";
 
 export const generateMetadata = ({
   params,
@@ -61,24 +64,22 @@ const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
 
   revalidateTag(slug);
 
-  const views = await getViews(slug);
-
   if (!guide) {
     return redirect("/404");
   }
 
   return (
     <main className="main-container">
-      <article className="flex space-y-4 flex-col items-start justify-center max-w-2xl mx-auto mb-16">
+      <article className="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center space-y-4">
         <header>
-          <h1 className="text-3xl font-bold tracking-tight text-center md:text-4xl md:leading-tight lg:text-[2.5rem]">
+          <h1 className="text-center text-3xl font-bold tracking-tight md:text-4xl md:leading-tight lg:text-[2.5rem]">
             {guide.title}
           </h1>
         </header>
 
         <Guide code={guide.body.code} />
 
-        <footer className="flex items-center justify-between w-full">
+        <footer className="flex w-full items-center justify-between">
           <div>
             <ShareViaTwitter
               title={guide.title}
@@ -88,7 +89,11 @@ const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
           </div>
 
           <div>
-            <p>{`${views} views`}</p>
+            <p>
+              <Suspense fallback="views">
+                <ViewsCounter slug={slug} />
+              </Suspense>
+            </p>
           </div>
         </footer>
       </article>

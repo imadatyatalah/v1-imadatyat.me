@@ -1,8 +1,9 @@
+import { pick } from "contentlayer/client";
+import { allBlogs, allGuides } from "contentlayer/generated";
+
 import AvailableForNewOpportunities from "@/components/AvailableForNewOpportunities";
 import BlogPost from "@/components/BlogPost";
 import GuidePost from "@/components/GuidePost";
-import { pick } from "contentlayer/client";
-import { allBlogs, allGuides } from "contentlayer/generated";
 
 const HomePage = () => {
   const posts = allBlogs
@@ -54,7 +55,7 @@ const HomePage = () => {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold">Latest posts</h2>
 
-          <div className="flex flex-col sm:grid space-y-8 sm:space-y-0 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          <div className="flex flex-col space-y-8 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3">
             {posts.slice(0, 3).map((post) => (
               <BlogPost key={post.slug} {...post} />
             ))}

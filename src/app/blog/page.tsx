@@ -1,7 +1,8 @@
-import BlogPost from "@/components/BlogPost";
 import { pick } from "contentlayer/client";
 import { allBlogs } from "contentlayer/generated";
 import { Metadata } from "next";
+
+import BlogPost from "@/components/BlogPost";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -29,7 +30,7 @@ const BlogPage = () => {
       <section className="space-y-4">
         <h1 className="text-3xl font-bold">Blog</h1>
 
-        <div className="flex flex-col sm:grid space-y-8 sm:space-y-0 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+        <div className="flex flex-col space-y-8 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3">
           {posts.map((post) => (
             <BlogPost key={post.slug} {...post} />
           ))}

@@ -1,18 +1,17 @@
 import { StaticImageData } from "next/image";
-
-import timeTrackingDashboard from "public/static/projects/time-tracking-dashboard.jpg";
 import columnPreviewCardComponent from "public/static/projects/3-column-preview-card-component.jpg";
+import adviceGeneratorApp from "public/static/projects/advice-generator-app.jpg";
 import loopstudiosLandingPage from "public/static/projects/loopstudios-landing-page.jpg";
+import octocake from "public/static/projects/octocake.png";
+import QRCodeComponent from "public/static/projects/qr-code-component.jpg";
 import restCountriesApiWithColorThemeSwitcher from "public/static/projects/rest-countries-api-with-color-theme-switcher.jpg";
+import socialMediaDashboardWithThemeSwitcher from "public/static/projects/social-media-dashboard-with-theme-switcher.jpg";
 import socialProofSection from "public/static/projects/social-proof-section.jpg";
 import statsPreviewCardComponent from "public/static/projects/stats-preview-card-component.jpg";
 import sunnysideAgencyLandingPage from "public/static/projects/sunnyside-agency-landing-page.jpg";
 import testimonialsGridSection from "public/static/projects/testimonials-grid-section.jpg";
+import timeTrackingDashboard from "public/static/projects/time-tracking-dashboard.jpg";
 import urlShorteningApi from "public/static/projects/url-shortening-api.jpg";
-import QRCodeComponent from "public/static/projects/qr-code-component.jpg";
-import adviceGeneratorApp from "public/static/projects/advice-generator-app.jpg";
-import socialMediaDashboardWithThemeSwitcher from "public/static/projects/social-media-dashboard-with-theme-switcher.jpg";
-import octocake from "public/static/projects/octocake.png";
 
 // Frontend Mentor challenges repository
 const challengesRepo =

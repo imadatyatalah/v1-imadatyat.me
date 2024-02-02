@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image, { ImageProps } from "next/image";
+import Link from "next/link";
 
 const CustomLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
   const href = props.href;
