@@ -5,9 +5,7 @@ const nextConfig = {
   experimental: {
     ppr: true,
   },
-  images: {
-    domains: ["media.licdn.com"],
-  },
+
   headers() {
     return [
       {

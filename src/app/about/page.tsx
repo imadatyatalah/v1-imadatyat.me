@@ -1,6 +1,7 @@
-import AvailableForNewOpportunities from "@/components/AvailableForNewOpportunities";
 import { Metadata } from "next";
 import Image from "next/image";
+
+import AvailableForNewOpportunities from "@/components/AvailableForNewOpportunities";
 
 export const metadata: Metadata = {
   title: "About",
@@ -24,7 +25,7 @@ const ExperienceCard = ({
   return (
     <div className="flex space-x-3">
       <div>
-        <div className="relative w-[3.125rem] h-[3.125rem]">
+        <div className="relative h-[3.125rem] w-[3.125rem]">
           <Image
             src={logo}
             width={50}
@@ -85,14 +86,14 @@ const AboutPage = () => {
           <div className="space-y-4">
             <ExperienceCard
               experience={{
-                logo: "https://media.licdn.com/dms/image/C4E0BAQG-0DgOT34Vqg/company-logo_100_100/0/1673637608325?e=1699488000&v=beta&t=et20J6QM4KDtj4JGy7M-0OY8a78K6P_04ZJEh-xcpdg",
+                logo: "/static/portfolly_logo.jpeg",
                 jobTitle: "Co-Founder",
                 company: "Portfolly",
                 employmentType: "Full-time",
                 hiringDate: "Sep 2022 - Present",
                 content: (
                   <div className="text-sm">
-                    <ul className="list-disc list-inside ml-2">
+                    <ul className="ml-2 list-inside list-disc">
                       <li>Setup multi-tenancy</li>
 
                       <li>
@@ -106,7 +107,7 @@ const AboutPage = () => {
 
             <ExperienceCard
               experience={{
-                logo: "https://media.licdn.com/dms/image/C4D0BAQHl_VZFKwbItw/company-logo_100_100/0/1659460397480?e=1699488000&v=beta&t=-aBySiXHHS_afwdhCQ17_GEC4rETyajdVklHMsj-ntM",
+                logo: "/static/obytes_logo.jpeg",
                 jobTitle: "Front-end Developer",
                 company: "Obytes",
                 employmentType: "Full-time",
@@ -115,7 +116,7 @@ const AboutPage = () => {
                   <div className="text-sm">
                     <h3 className="font-medium">- Lineup project:</h3>
 
-                    <ul className="list-disc list-inside ml-2">
+                    <ul className="ml-2 list-inside list-disc">
                       <li>
                         Led the front-end team, making sure we built a
                         great-looking and smooth-working web app.
@@ -147,7 +148,7 @@ const AboutPage = () => {
           <h2 className="text-2xl font-bold">Links</h2>
 
           <div className="flex flex-col">
-            <ul className="list-disc list-inside space-y-2 font-medium">
+            <ul className="list-inside list-disc space-y-2 font-medium">
               <li>
                 Twitter:{" "}
                 <a
