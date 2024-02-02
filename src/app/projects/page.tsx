@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
+
 import Projects from "./projects";
 
 export const metadata: Metadata = {
@@ -11,7 +13,9 @@ const ProjectsPage = () => {
       <section className="space-y-4">
         <h1 className="text-3xl font-bold">Projects</h1>
 
-        <Projects />
+        <Suspense>
+          <Projects />
+        </Suspense>
       </section>
     </main>
   );
