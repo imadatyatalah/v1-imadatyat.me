@@ -1,13 +1,13 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
 import type { Project } from "../../data/projects";
 
 const ProjectCard = ({ title, live, image }: Project) => {
   return (
     <a href={live} target="_blank" rel="noopener noreferrer">
-      <div className="max-w-sm my-8 sm:max-w-none sm:my-0 group">
-        <div className="flex lg:transition-all lg:transform lg:hover:scale-105">
+      <div className="group my-8 max-w-sm sm:my-0 sm:max-w-none">
+        <div className="flex lg:transform lg:transition-all lg:hover:scale-105">
           <Image
             src={image}
             alt={title}

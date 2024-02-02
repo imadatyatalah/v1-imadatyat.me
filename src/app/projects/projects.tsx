@@ -1,8 +1,9 @@
 "use client";
 
-import { projects, tags } from "../../../data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import useTags from "@/hooks/useTags";
+
+import { projects, tags } from "../../../data/projects";
 
 const Projects = () => {
   const [data, setCurrentTag] = useTags(projects);
@@ -12,7 +13,7 @@ const Projects = () => {
       <div className="flex flex-wrap">
         {tags.map((tag) => (
           <button
-            className="px-2 py-1 mb-3 mr-3 font-semibold text-white rounded-md lg:transition-all lg:transform bg-blue-700 hover:bg-blue-600 lg:hover:scale-105"
+            className="mb-3 mr-3 rounded-md bg-blue-700 px-2 py-1 font-semibold text-white hover:bg-blue-600 lg:transform lg:transition-all lg:hover:scale-105"
             onClick={() => setCurrentTag(tag)}
             key={tag}
           >

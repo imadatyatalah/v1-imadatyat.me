@@ -1,7 +1,7 @@
-import TwitterIcon from "@/icons/TwitterIcon";
-import GithubIcon from "@/icons/GithubIcon";
 import DevIcon from "@/icons/DevIcon";
+import GithubIcon from "@/icons/GithubIcon";
 import LinkedInIcon from "@/icons/LinkedInIcon";
+import TwitterIcon from "@/icons/TwitterIcon";
 
 const SOCIAL_LINKS = [
   {
@@ -29,7 +29,7 @@ const SOCIAL_LINKS = [
 const Footer = () => {
   return (
     <footer
-      className="space-y-4 h-[120px] text-center flex items-center flex-col justify-center"
+      className="flex h-[120px] flex-col items-center justify-center space-y-4 text-center"
       id="global-footer"
     >
       <div className="flex items-center justify-center">

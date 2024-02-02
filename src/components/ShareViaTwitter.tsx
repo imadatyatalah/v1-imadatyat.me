@@ -1,7 +1,7 @@
 import React from "react";
 
-import { baseUrl } from "@/lib/constants";
 import TwitterIcon from "@/icons/TwitterIcon";
+import { baseUrl } from "@/lib/constants";
 
 const ShareViaTwitter = ({
   title,
@@ -19,7 +19,7 @@ const ShareViaTwitter = ({
       href={tweetShareURL}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex text-sm items-center text-blue-400 fill-blue-400"
+      className="flex items-center fill-blue-400 text-sm text-blue-400"
     >
       <TwitterIcon width={22} height={22} />
 

@@ -1,7 +1,8 @@
-import GuidePost from "@/components/GuidePost";
 import { pick } from "contentlayer/client";
 import { allGuides } from "contentlayer/generated";
 import { Metadata } from "next";
+
+import GuidePost from "@/components/GuidePost";
 
 export const metadata: Metadata = {
   title: "Guides",

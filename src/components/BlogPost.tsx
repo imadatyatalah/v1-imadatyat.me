@@ -1,10 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
-
-import dayjs from "dayjs";
-
 import type { Blog } from "contentlayer/generated";
+import dayjs from "dayjs";
+import Image from "next/image";
+import Link from "next/link";
 import { Suspense } from "react";
+
 import ViewsCounter from "./ViewsCounter";
 
 type Props = Pick<
@@ -15,9 +14,9 @@ type Props = Pick<
 const BlogPost = ({ slug, title, publishedAt, image, blurDataURL }: Props) => {
   return (
     <Link href={`/blog/${slug}`}>
-      <article className="max-w-sm sm:max-w-none group">
+      <article className="group max-w-sm sm:max-w-none">
         {image ? (
-          <div className="flex mb-2">
+          <div className="mb-2 flex">
             <Image
               src={image}
               width="1200"
@@ -32,7 +31,7 @@ const BlogPost = ({ slug, title, publishedAt, image, blurDataURL }: Props) => {
         ) : null}
 
         <div className="space-y-2">
-          <h3 className="text-xl font-semibold title-hover">{title}</h3>
+          <h3 className="title-hover text-xl font-semibold">{title}</h3>
 
           <p className="text-sm text-gray-400">
             {dayjs(publishedAt).format("MMMM D, YYYY")} {` • `}
