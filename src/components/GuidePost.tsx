@@ -16,10 +16,10 @@ const GuidePost = ({ title, description, slug, publishedAt }: Props) => {
 
           <p className="text-sm text-gray-400 md:text-right">
             {dayjs(publishedAt).format("MMMM D, YYYY")}
-            {` • `}
+            {/* {` • `}
             <Suspense fallback="views">
               <ViewsCounter slug={slug} />
-            </Suspense>
+            </Suspense> */}
           </p>
         </div>
 

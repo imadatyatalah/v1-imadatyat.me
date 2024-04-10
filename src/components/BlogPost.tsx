@@ -34,10 +34,11 @@ const BlogPost = ({ slug, title, publishedAt, image, blurDataURL }: Props) => {
           <h3 className="title-hover text-xl font-semibold">{title}</h3>
 
           <p className="text-sm text-gray-400">
-            {dayjs(publishedAt).format("MMMM D, YYYY")} {` • `}
+            {dayjs(publishedAt).format("MMMM D, YYYY")}
+            {/* {` • `}
             <Suspense fallback="views">
               <ViewsCounter slug={slug} />
-            </Suspense>
+            </Suspense> */}
           </p>
         </div>
       </article>

@@ -56,13 +56,13 @@ const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
 
   const guide = allGuides.find((guide) => guide.slug === params?.slug);
 
-  await prisma.views.upsert({
-    where: { slug: slug },
-    create: { slug: slug },
-    update: { count: { increment: 1 } },
-  });
+  // await prisma.views.upsert({
+  //   where: { slug: slug },
+  //   create: { slug: slug },
+  //   update: { count: { increment: 1 } },
+  // });
 
-  revalidateTag(slug);
+  // revalidateTag(slug);
 
   if (!guide) {
     return redirect("/404");
@@ -88,13 +88,13 @@ const GuideDetailsPage = async ({ params }: { params: { slug: string } }) => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <p>
               <Suspense fallback="views">
                 <ViewsCounter slug={slug} />
               </Suspense>
             </p>
-          </div>
+          </div> */}
         </footer>
       </article>
     </main>

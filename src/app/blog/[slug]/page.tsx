@@ -57,13 +57,13 @@ const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
 
   const post = allBlogs.find((post) => post.slug === slug);
 
-  await prisma.views.upsert({
-    where: { slug: slug },
-    create: { slug: slug },
-    update: { count: { increment: 1 } },
-  });
+  // await prisma.views.upsert({
+  //   where: { slug: slug },
+  //   create: { slug: slug },
+  //   update: { count: { increment: 1 } },
+  // });
 
-  revalidateTag(slug);
+  // revalidateTag(slug);
 
   if (!post) {
     return redirect("/404");
@@ -84,10 +84,11 @@ const BlogDetailsPage = async ({ params }: { params: { slug: string } }) => {
             </p>
 
             <p>
-              {post.readingTime.text} {` • `}
+              {post.readingTime.text}
+              {/* {` • `}
               <Suspense fallback="views">
                 <ViewsCounter slug={slug} />
-              </Suspense>
+              </Suspense> */}
             </p>
           </div>
         </header>
