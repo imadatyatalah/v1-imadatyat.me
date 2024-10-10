@@ -90,15 +90,23 @@ const AboutPage = () => {
                 jobTitle: "Co-Founder",
                 company: "Portfolly",
                 employmentType: "Full-time",
-                hiringDate: "Sep 2022 - Present",
+                hiringDate: "Sep 2022 - Apr 2023",
                 content: (
                   <div className="text-sm">
-                    <ul className="ml-2 list-inside list-disc">
+                    <ul className="ml-2 list-inside list-disc space-y-1">
                       <li>Setup multi-tenancy</li>
 
                       <li>
                         Took care of all API stuff using Prisma and Planetscale
                       </li>
+                      <li>
+                        Handled API Development using Next.js API routes, Prisma
+                        ORM, and Planetscale MySQL database.
+                      </li>
+                      <li>
+                        Handled Front-end API Integration using react-query.
+                      </li>
+                      <li>Integrated GitHub OAuth using next-auth.</li>
                     </ul>
                   </div>
                 ),
@@ -111,32 +119,80 @@ const AboutPage = () => {
                 jobTitle: "Front-end Developer",
                 company: "Obytes",
                 employmentType: "Full-time",
-                hiringDate: "Apr 2022 - Present",
+                hiringDate: "Apr 2022 - Oct 2024",
                 content: (
-                  <div className="text-sm">
-                    <h3 className="font-medium">- Lineup project:</h3>
+                  <div className="space-y-4 text-sm">
+                    <div className="space-y-2">
+                      <h3 className="font-medium">- Nawalic project</h3>
 
-                    <ul className="ml-2 list-inside list-disc">
-                      <li>
-                        Led the front-end team, making sure we built a
-                        great-looking and smooth-working web app.
-                      </li>
+                      <ul className="ml-2 list-inside list-disc space-y-1">
+                        <li>
+                          Built Nawalic&apos;s landing page based on designs
+                          from Figma provided by our designer.
+                        </li>
 
-                      <li>
-                        Handled the setup of Stripe payments and Stripe Connect,
-                        so customers could easily and safely pay online.
-                      </li>
+                        <li>
+                          Connected the newsletter signup form to the backend.
+                        </li>
 
-                      <li>
-                        Figured out how to add tricky new stuff to the site and
-                        made sure it all worked well.
-                      </li>
+                        <li>
+                          Figured out how to add tricky new stuff to the site
+                          and made sure it all worked well.
+                        </li>
 
-                      <li>
-                        Checked out my teammates&apos; code on GitHub to help
-                        catch any issues and make sure everything was on track.
-                      </li>
-                    </ul>
+                        <li>
+                          Checked out my teammates&apos; code on GitHub to help
+                          catch any issues and make sure everything was on
+                          track.
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-2">
+                      <h3 className="font-medium">- Lineup project:</h3>
+
+                      <ul className="ml-2 list-inside list-disc space-y-1">
+                        <li>
+                          Managed the front-end team for Lineup project,
+                          ensuring a visually appealing and user-friendly web
+                          application.
+                        </li>
+
+                        <li>
+                          Configured Stripe payments and Stripe Connect,
+                          enabling secure and hassle-free online transactions
+                          for customers.
+                        </li>
+
+                        <li>
+                          Implemented complex features seamlessly into the site
+                          like authentication using OTP, User onboarding, and
+                          dashboards... ensuring smooth functionality.
+                        </li>
+
+                        <li>
+                          Reviewed teammates&apos; code on GitHub, identifying
+                          and resolving issues to keep the project on course.
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-2">
+                      <h3 className="font-medium">- Daratma project:</h3>
+
+                      <ul className="ml-2 list-inside list-disc space-y-1">
+                        <li>
+                          Built Daratma&apos;s new landing page based on designs
+                          from Figma provided by our designer.
+                        </li>
+
+                        <li>Implemented Hygraph CMS Integration.</li>
+
+                        <li>
+                          Connected the newsletter signup form to the backend.
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 ),
               }}
