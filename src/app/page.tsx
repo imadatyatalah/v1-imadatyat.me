@@ -53,16 +53,6 @@ const HomePage = () => {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold">Latest posts</h2>
-
-          <div className="flex flex-col space-y-8 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3">
-            {posts.slice(0, 3).map((post) => (
-              <BlogPost key={post.slug} {...post} />
-            ))}
-          </div>
-        </div>
-
-        <div className="space-y-4">
           <h2 className="text-2xl font-bold">Latest guides</h2>
 
           <div className="space-y-8">
